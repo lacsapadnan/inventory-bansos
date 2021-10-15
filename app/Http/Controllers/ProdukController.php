@@ -38,7 +38,6 @@ class ProdukController extends Controller
     {
         $data = $request->all();
         Produk::create($data);
-
         return redirect('produk')->with('success', 'Produk berhasil dibuat');
     }
 

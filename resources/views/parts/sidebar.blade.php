@@ -9,6 +9,13 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('bansos.index') }}" aria-expanded="false">
+                        <i class="flaticon-381-box"></i>
+                        <span class="nav-text">Bansos</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ route('verifikasi') }}" aria-expanded="false">
                         <i class="flaticon-381-user-3"></i>
                         <span class="nav-text">Verifikasi Penerima</span>

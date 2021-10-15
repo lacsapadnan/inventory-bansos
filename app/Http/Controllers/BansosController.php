@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 
 class BansosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    function __construct()
+        {
+            $this->Bansos = new Bansos;
+        }
+
+
     public function index()
     {
         $bansos = Bansos::with(['paket', 'penerima'])->get();
@@ -44,7 +45,10 @@ class BansosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Bansos::create($data);
+        $this->Bansos->tambah_data($update_stock_out);
+        return redirect('bansos')->with('success', 'Produk berhasil dibuat');
     }
 
     /**

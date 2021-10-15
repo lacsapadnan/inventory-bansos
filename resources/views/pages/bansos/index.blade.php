@@ -31,10 +31,10 @@
                             @foreach ($bansos as $index => $bansos)
                                 <tr>
                                     <td>{{ $index +1 }}</td>
-                                    <td>{{ $bansos->product->name }}</td>
-                                    <td>{{ $bansos->recipient->name }}</td>
+                                    <td>{{ $bansos->paket->nama_paket }}</td>
+                                    <td>{{ $bansos->penerima->nama }}</td>
                                     <td>{{ $bansos->qty }}</td>
-                                    <td>{{ $bansos->date }}</td>
+                                    <td>{{ $bansos->tanggal }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <form method="POST" action="{{ route('bansos.destroy', $bansos->id) }}">
@@ -73,18 +73,20 @@
                                     @csrf
                                     @method('POST')
                                     <div class="form-group">
-                                        <label for="name">Nama Produk</label>
-                                        <select class="form-control" name="product_id" id="single-select">
-                                            @foreach ($produk as $produk)
-                                                <option value="{{ $produk->id }}">{{ $produk->name }}</option>
+                                        <label for="name">Nama Paket</label>
+                                        <select class="form-control" name="paket_id" required="">
+                                            <option value="">-- Pilih --</option>
+                                            @foreach ($paket as $paket)
+                                                <option value="{{ $paket->id }}">{{ $paket->nama_paket }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Nama Penerima</label>
-                                        <select class="form-control" name="supplier_id" id="single-select">
+                                        <select class="form-control" name="penerima_id" required="">
+                                            <option value="">-- Pilih --</option>
                                             @foreach ($penerima as $penerima)
-                                                <option value="{{ $penerima->id }}">{{ $penerima->name }}</option>
+                                                <option value="{{ $penerima->id }}">{{ $penerima->nama }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -94,7 +96,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Date</label>
-                                        <input name="date" type="text" class="form-control" placeholder="Masukan tanggal bansos" id="mdate">
+                                        <input name="tanggal" type="text" class="form-control" placeholder="Masukan tanggal bansos" id="mdate">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
