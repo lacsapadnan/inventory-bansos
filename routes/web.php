@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     // Route::resource('bansos', BansosController::class);
     Route::resource('penerima', PenerimaController::class);
     Route::resource('paket-bansos', PaketBansosController::class);
+    Route::get('/showDetail', [PaketBansosController::class, 'showDetail'])->name('showDetail');
+    Route::get('/DeleteDetail', [PaketBansosController::class, 'DeleteDetail'])->name('DeleteDetail');
 
     // Route untuk verifikasi
     Route::get('/verifikasi', [PenerimaController::class, 'verifikasi'])->name('verifikasi');

@@ -16,8 +16,6 @@ class CreatePaketBansosTable extends Migration
         Schema::create('paket_bansos', function (Blueprint $table) {
             $table->id();
             $table->string('nama_paket');
-            $table->bigInteger('produk_id');
-            $table->integer('qty');
             $table->string('deskripsi');
             $table->timestamps();
         });

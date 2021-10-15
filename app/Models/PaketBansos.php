@@ -9,6 +9,6 @@ class PaketBansos extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama_paket', 'produk_id', 'qty', 'deskripsi'
+        'nama_paket','deskripsi'
     ];
 }
