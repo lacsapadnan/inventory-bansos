@@ -7,6 +7,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RestokController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BansosController;
+use App\Http\Controllers\PaketrwController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::resource('restok', RestokController::class);
     Route::resource('bansos', BansosController::class);
     Route::resource('penerima', PenerimaController::class);
+    Route::resource('paketrw', PaketrwController::class);
     Route::resource('paket-bansos', PaketBansosController::class);
     Route::get('/showDetail', [PaketBansosController::class, 'showDetail'])->name('showDetail');
     Route::get('/DeleteDetail', [PaketBansosController::class, 'DeleteDetail'])->name('DeleteDetail');

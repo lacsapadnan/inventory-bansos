@@ -9,11 +9,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('bansos.index') }}" aria-expanded="false">
+                    <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                         <i class="flaticon-381-box"></i>
-                        <span class="nav-text">Bansos</span>
+                        <span class="nav-text">Bansos RW</span>
                     </a>
-                </li>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('bansos.index') }}">Transaksi Bansos RW</a></li>
+                    <li><a href="{{ route('paketrw.index') }}">Stok Bansos RW</a></li>
+                </ul>
+            </li>
 
                 <li>
                     <a href="{{ route('verifikasi') }}" aria-expanded="false">

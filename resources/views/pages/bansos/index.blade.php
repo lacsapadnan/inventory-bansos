@@ -20,8 +20,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Produk</th>
-                                <th>Nama Penerima</th>
+                                <th>Nama Paket</th>
+                                <th>Nama RW</th>
                                 <th>Kuantitas</th>
                                 <th>Tanggal</th>
                                 <th>Action</th>
@@ -32,7 +32,7 @@
                                 <tr>
                                     <td>{{ $index +1 }}</td>
                                     <td>{{ $bansos->paket->nama_paket }}</td>
-                                    <td>{{ $bansos->penerima->nama }}</td>
+                                    <td>{{ $bansos->penerima->name }}</td>
                                     <td>{{ $bansos->qty }}</td>
                                     <td>{{ $bansos->tanggal }}</td>
                                     <td>
@@ -52,7 +52,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Produk</th>
-                                <th>Nama Penerima</th>
+                                <th>Nama RW</th>
                                 <th>Kuantitas</th>
                                 <th>Tanggal</th>
                                 <th>Action</th>
@@ -82,11 +82,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="name">Nama Penerima</label>
+                                        <label for="name">Nama RW</label>
                                         <select class="form-control" name="penerima_id" required="">
                                             <option value="">-- Pilih --</option>
                                             @foreach ($penerima as $penerima)
-                                                <option value="{{ $penerima->id }}">{{ $penerima->nama }}</option>
+                                                <option value="{{ $penerima->id }}">{{ $penerima->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

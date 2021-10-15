@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Bansos extends Model
 {
@@ -16,23 +17,12 @@ class Bansos extends Model
          return $this->belongsTo(PaketBansos::class, 'paket_id');
     }
     public function penerima() {
-         return $this->belongsTo(Penerima::class, 'penerima_id');
+         return $this->belongsTo(User::class, 'penerima_id');
     }
 
 
-    public function update_stock_in($data){
-        $qty = $data['qty'];
-        $id = $data['item_id'];
-        $sql = "UPDATE item SET stock = stock + '$qty' WHERE item_id = '$id'";
-        $this->db->query($sql);
-
-    }
-
-    public function update_stock_out($data){
-        $qty = $data['qty'];
-        $id = $data['item_id'];
-        $sql = "UPDATE item SET stock = stock - '$qty' WHERE item_id = '$id'";
-        $this->db->query($sql);
-
+public function update_stock_out($id_produk, $qty, $kali){
+        $a = $qty*$kali;
+        DB::update("UPDATE produks SET stok = stok - $a where id='$id_produk'");
     }
 }

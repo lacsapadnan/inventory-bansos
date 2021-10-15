@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Bansos;
 use App\Models\PaketBansos;
 use App\Models\Penerima;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class BansosController extends Controller
@@ -19,7 +21,8 @@ class BansosController extends Controller
     {
         $bansos = Bansos::with(['paket', 'penerima'])->get();
         $paket = PaketBansos::all();
-        $penerima = Penerima::all();
+        $penerima =User::where('roles','rw')
+                    ->get();
         return view('pages.bansos.index', [
             'bansos' => $bansos,
             'paket' => $paket,
@@ -27,36 +30,35 @@ class BansosController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+ public function store(Request $request)
     {
         $data = $request->all();
         Bansos::create($data);
-        $this->Bansos->tambah_data($update_stock_out);
-        return redirect('bansos')->with('success', 'Produk berhasil dibuat');
+        $paket_id = $request->paket_id;
+        $penerima_id = $request->penerima_id;
+        $qty = $request->qty;
+
+        $cek =  DB::table('paket_rw')
+                ->where('id_paket_bansos', $paket_id)
+                ->where('id_rw', $penerima_id)
+                ->count();
+
+
+        if ($cek > 0) {
+            DB::update("UPDATE paket_rw SET stok = stok + $qty where id_paket_bansos='$paket_id' and id_rw='$penerima_id'");
+        } else {
+            DB::insert("insert into paket_rw (id_paket_bansos,id_rw,stok) values ('$paket_id','$penerima_id','$qty')");
+        }
+        return redirect()->route('bansos.index');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
@@ -73,26 +75,21 @@ class BansosController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $data = Bansos::findOrFail($id);
+        $paket_id = $data->paket_id;
+        $qty = $data->qty;
+        $penerima_id = $data->penerima_id;
+        DB::update("UPDATE paket_rw SET stok = stok - $qty where id_paket_bansos='$paket_id' and id_rw='$penerima_id'");
+        Bansos::findOrFail($id)->delete();
+        return redirect()->route('bansos.index');
     }
 }
