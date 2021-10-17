@@ -31,11 +31,15 @@
                                     <td>{{ $bansos->paket->nama_paket }}</td>
                                     <td>{{ $bansos->penerima->name }}</td>
                                     <td>{{ $bansos->stok }}</td>
-
                                  </tr>
                             @endforeach
-
                         </tbody>
+                        <tfoot>
+                            <th>No</th>
+                            <th>Nama Paket</th>
+                            <th>Nama RW</th>
+                            <th>Kuantitas</th>
+                        </tfoot>
                     </table>
                 </div>
 
