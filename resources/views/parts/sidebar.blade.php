@@ -55,6 +55,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('PaketBansosRw') }}" aria-expanded="false">
+                    <i class="flaticon-381-box"></i>
+                    <span class="nav-text">Ketersediaan Paket</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('penerima.index') }}" aria-expanded="false">
                     <i class="flaticon-381-user-9"></i>
                     <span class="nav-text">Data Penerima</span>

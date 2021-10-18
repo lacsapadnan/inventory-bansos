@@ -8,6 +8,7 @@ use App\Http\Controllers\RestokController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BansosController;
 use App\Http\Controllers\PaketrwController;
+use App\Http\Controllers\PenyaluranBansosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::resource('paket-bansos', PaketBansosController::class);
     Route::get('/showDetail', [PaketBansosController::class, 'showDetail'])->name('showDetail');
     Route::get('/DeleteDetail', [PaketBansosController::class, 'DeleteDetail'])->name('DeleteDetail');
+    Route::resource('penyaluran', PenyaluranBansosController::class);
+    Route::get('/paketbansos', [PaketrwController::class, 'dashboard'])->name('PaketBansosRw');
 
     // Route untuk verifikasi
     Route::get('/verifikasi', [PenerimaController::class, 'verifikasi'])->name('verifikasi');
