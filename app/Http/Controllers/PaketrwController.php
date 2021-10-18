@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Paketrw;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaketrwController extends Controller
 {
@@ -85,5 +86,12 @@ class PaketrwController extends Controller
     public function destroy(Paketrw $paketrw)
     {
         //
+    }
+
+    public function dashboard() {
+        $paketrw = Paketrw::where('id_rw', Auth::user()->id)->get();
+        return view('pages.RW.paket.index', [
+            'paketrw' => $paketrw,
+        ]);
     }
 }
