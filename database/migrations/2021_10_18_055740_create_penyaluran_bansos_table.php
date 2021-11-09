@@ -15,11 +15,12 @@ class CreatePenyaluranBansosTable extends Migration
     {
         Schema::create('penyaluran_bansos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_penerima');
+            $table->bigInteger('id_penerima')->unsigned();
             $table->bigInteger('id_paket_rw')->unsigned();
             $table->timestamps();
 
 
+            $table->foreign('id_panerima')->references('id')->on('penerima');
             $table->foreign('id_paket_rw')->references('id')->on('paket_rw');
         });
     }

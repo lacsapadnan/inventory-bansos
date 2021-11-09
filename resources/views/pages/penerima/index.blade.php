@@ -43,12 +43,20 @@
                                     @endif
                                     <td>
                                         <div class="d-flex">
+                                            @if ($penerima['status'] == 'disetujui')
+                                                <form method="POST" action="{{ route('penerima.destroy', $penerima->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            @else
                                             <a href="{{ route('penerima.edit', $penerima->id) }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
                                             <form method="POST" action="{{ route('penerima.destroy', $penerima->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
                                             </form>
+                                            @endif
                                         </div>
                                     </td>
                                  </tr>

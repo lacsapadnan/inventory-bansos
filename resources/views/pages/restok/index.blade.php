@@ -74,7 +74,7 @@
                                     @method('POST')
                                     <div class="form-group">
                                         <label for="name">Nama Produk</label>
-                                        <select class="form-control" name="produk_id" id="single-select">
+                                        <select class="form-control" name="id_produk" id="single-select">
                                             @foreach ($produk as $produk)
                                                 <option value="{{ $produk->id }}">{{ $produk->nama }}</option>
                                             @endforeach
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Nama Supplier</label>
-                                        <select class="form-control" name="supplier_id" id="single-select-placeholder">
+                                        <select class="form-control" name="id_supplier" id="single-select-placeholder">
                                             @foreach ($supplier as $supplier)
                                                 <option value="{{ $supplier->id }}">{{ $supplier->nama }}</option>
                                             @endforeach

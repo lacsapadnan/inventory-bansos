@@ -66,6 +66,12 @@
                     <span class="nav-text">Data Penerima</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('penyaluran.index') }}" aria-expanded="false">
+                    <i class="flaticon-381-share"></i>
+                    <span class="nav-text">Penyaluran Bansos</span>
+                </a>
+            </li>
             @endif
         </ul>
     </div>

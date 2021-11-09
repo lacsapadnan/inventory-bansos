@@ -13,10 +13,10 @@ class PenyaluranBansos extends Model
     ];
 
     public function penerima() {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(Penerima::class, 'id_penerima');
     }
 
     public function paket_rw() {
-        return $this->hasMany(Paketrw::class);
+        return $this->belongsTo(Paketrw::class, 'id_paket_rw');
     }
 }
