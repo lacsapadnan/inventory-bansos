@@ -42,6 +42,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('user.index') }}" aria-expanded="false">
+                    <i class="flaticon-381-user-1"></i>
+                    <span class="nav-text">Data User</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('paket-bansos.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-box-2"></i>
                     <span class="nav-text">Paket Bansos</span>

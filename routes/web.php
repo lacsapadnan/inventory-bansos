@@ -9,6 +9,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BansosController;
 use App\Http\Controllers\PaketrwController;
 use App\Http\Controllers\PenyaluranBansosController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('qr/{id}', [PenyaluranBansosController::class, 'qr']);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
@@ -36,6 +39,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::resource('penerima', PenerimaController::class);
     Route::resource('paketrw', PaketrwController::class);
     Route::resource('paket-bansos', PaketBansosController::class);
+    Route::resource('user', UserController::class);
     Route::get('/showDetail', [PaketBansosController::class, 'showDetail'])->name('showDetail');
     Route::get('/DeleteDetail', [PaketBansosController::class, 'DeleteDetail'])->name('DeleteDetail');
     Route::resource('penyaluran', PenyaluranBansosController::class);
@@ -45,5 +49,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/verifikasi', [PenerimaController::class, 'verifikasi'])->name('verifikasi');
     Route::get('/disetujui/{id}', [PenerimaController::class, 'disetujui'])->name('disetujui');
     Route::get('/ditolak/{id}', [PenerimaController::class, 'ditolak'])->name('ditolak');
+
+    // Generate QR Code
+    Route::get('qrcode/{id}', [PenyaluranBansosController::class, 'generate'])->name('generate');
 });
 
