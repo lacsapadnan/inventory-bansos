@@ -10,7 +10,22 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Detail Penyaluran Bansos</h4>
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Detail Penyaluran Bansos</h4>
+                    </div>
+                    @php
+                        $qrcode_data = json_encode([
+                            'nama' => $penyaluran->penerima->nama,
+                            'alamat' => $penyaluran->penerima->alamat,
+                            'telp' => $penyaluran->penerima->telp,
+                        ]);
+                    @endphp
+                    <div class="col-6">
+                        <button id="btn-generate-qrcode" onclick="generateQRCode('{{ $qrcode_data }}')" class="btn btn-outline-primary"> Generate QRCode</button>
+                        <img id="img-qrcode" src="" alt="">
+                    </div>
+                </div>
 
             </div>
             <div class="card-body">
@@ -59,4 +74,12 @@
     <script src="assets/js/plugins-init/datatables.init.js"></script>
     <script src="assets/vendor/select2/js/select2.full.min.js"></script>
     <script src="assets/js/plugins-init/select2-init.js"></script>
+
+    <script>
+        function generateQRCode(datas)
+        {
+            const qrcode = `https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=${datas}%2F&choe=UTF-8`;
+            document.getElementById("img-qrcode").src = qrcode;
+        }
+    </script>
 @endpush
