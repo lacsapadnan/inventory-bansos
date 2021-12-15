@@ -121,4 +121,10 @@ class PenyaluranBansosController extends Controller
     {
         //
     }
+
+    public function generate_qrcode(Request $request)
+    {
+        $datas = $request['datas'];
+        return view('pages.RW.penyaluran.generate-qrcode', compact('datas'));
+    }
 }

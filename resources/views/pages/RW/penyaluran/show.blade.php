@@ -19,11 +19,11 @@
                             'nama' => $penyaluran->penerima->nama,
                             'alamat' => $penyaluran->penerima->alamat,
                             'telp' => $penyaluran->penerima->telp,
+                            'isiPaket' => $detail
                         ]);
                     @endphp
                     <div class="col-6">
-                        <button id="btn-generate-qrcode" onclick="generateQRCode('{{ $qrcode_data }}')" class="btn btn-outline-primary"> Generate QRCode</button>
-                        <img id="img-qrcode" src="" alt="">
+                        <a href="{{ url('/generate-qrcode?datas='.$qrcode_data) }}" target="_blank" class="btn btn-outline-primary">Generate QRCode</a>
                     </div>
                 </div>
 

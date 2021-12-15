@@ -29,6 +29,8 @@ Route::get('/', function () {
 
 Route::get('qr/{id}', [PenyaluranBansosController::class, 'qr']);
 
+Route::get('generate-qrcode', [PenyaluranBansosController::class, 'generate_qrcode']);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
