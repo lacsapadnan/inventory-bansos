@@ -18,9 +18,9 @@
                         $new_detail = [];
                         foreach ($detail as $key => $value) {
                             array_push($new_detail, [
-                                    'nama' => $value['nama'],
-                                    'qty' => $value['qty'],
-                                    'deskripsi' => $value['deskripsi']
+                                    'nama' => $value->nama,
+                                    'qty' => $value->qty,
+                                    'deskripsi' => $value->deskripsi
                             ]);
                         }
 
