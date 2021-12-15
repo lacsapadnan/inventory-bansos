@@ -15,11 +15,20 @@
                         <h4 class="card-title">Detail Penyaluran Bansos</h4>
                     </div>
                     @php
+                        $new_detail = [];
+                        foreach ($detail as $key => $value) {
+                            array_push($new_detail, [
+                                    'nama' => $value['nama'],
+                                    'qty' => $value['qty'],
+                                    'deskripsi' => $value['deskripsi']
+                            ]);
+                        }
+
                         $qrcode_data = json_encode([
                             'nama' => $penyaluran->penerima->nama,
                             'alamat' => $penyaluran->penerima->alamat,
                             'telp' => $penyaluran->penerima->telp,
-                            'isiPaket' => $detail
+                            'isiPaket' => $new_detail
                         ]);
                     @endphp
                     <div class="col-6">
